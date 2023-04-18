@@ -6,6 +6,7 @@ int main() {
 	char c;
 	int indent = 0;
 	int quoted = 0;
+	char prev = 0;
 	while((c = fgetc(stdin)) != EOF) {
 		if (!quoted && (c == '}' || c == ']')) {
 			fputc('\n', stdout);
@@ -15,7 +16,8 @@ int main() {
 		fputc(c, stdout);
 		switch (c) {
 			case '"':
-				quoted = !quoted;
+				if (prev != '\\')
+					quoted = !quoted;
 				break;
 			case '{':
 			case '[':
@@ -34,7 +36,8 @@ int main() {
 				TABS
 				break;
 			default:
-				continue;
+				break;
 		}
+		prev = c;
 	}
 }
