@@ -28,16 +28,19 @@ int main() {
 				TABS
 				break;
 			case ',':
-			case '}':
-			case ']':
 				if (quoted)
 					break;
 				fputc('\n', stdout);
 				TABS
+				break;
+			case ':':
+				if (!quoted)
+					fputc(' ', stdout);
 				break;
 			default:
 				break;
 		}
 		prev = c;
 	}
+	fputc('\n', stdout);
 }
