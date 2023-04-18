@@ -19,7 +19,7 @@ There is no canonical pronounciation.
 
 ## Build
 
-Coming soon™.
+Type `make`. For more information, checkout the Makefile.
 
 ## Usage
 
