@@ -21,8 +21,9 @@ int main() {
 			--indent;
 			TABS
 		}
-		// Print the current character.
-		fputc(c, stdout);
+		// Print the current character. Ignore unquoted whitespace.
+		if (quoted || (c != ' ' && c != '\t' && c != '\n'))
+			fputc(c, stdout);
 		// Do stuff after printing the current character.
 		switch (c) {
 			// Switch quoted.
